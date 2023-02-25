@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="./CSS/forca.css" media="screen">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>Jogo da Forca</title>
+</head>
+<body>
+    <div class ="container">
+        <div id="imagem"></div>
+        <div id="palavra-secreta">
+            <!-- <div class="letras">A</div>
+            <div class="letras">S</div>
+            <div class="letras">F</div>
+            <div class="letras">M</div>
+            <div class="letras">Z</div> -->
+        </div>
+        <div id="telcado">
+            <div class="teclas">
+                <button id="tecla-A" onclick="verificaLetraEsolhida ('A')">A</button>
+                <button id="tecla-B" onclick="verificaLetraEsolhida ('B')">B</button>
+                <button id="tecla-C" onclick="verificaLetraEsolhida ('C')">C</button>
+                <button id="tecla-D" onclick="verificaLetraEsolhida ('D')">D</button>
+                <button id="tecla-E" onclick="verificaLetraEsolhida ('E')">E</button>
+                <button id="tecla-F" onclick="verificaLetraEsolhida ('F')">F</button>
+                <button id="tecla-G" onclick="verificaLetraEsolhida ('G')">G</button>
+                <button id="tecla-H" onclick="verificaLetraEsolhida ('H')">H</button>
+                <button id="tecla-I" onclick="verificaLetraEsolhida ('I')">I</button>
+            </div>
+            <div class="teclas">
+                <button id="tecla-J" onclick="verificaLetraEsolhida ('J')">J</button>
+                <button id="tecla-K" onclick="verificaLetraEsolhida ('K')">K</button>
+                <button id="tecla-L" onclick="verificaLetraEsolhida ('L')">L</button>
+                <button id="tecla-M" onclick="verificaLetraEsolhida ('M')">M</button>
+                <button id="tecla-N" onclick="verificaLetraEsolhida ('N')">N</button>
+                <button id="tecla-O" onclick="verificaLetraEsolhida ('O')">O </button>
+                <button id="tecla-P" onclick="verificaLetraEsolhida ('P')">P</button>
+                <button id="tecla-Q" onclick="verificaLetraEsolhida ('Q')">Q</button>
+                <button id="tecla-R" onclick="verificaLetraEsolhida ('R')">R</button>
+            </div>
+            <div class="teclas">
+                <button id="tecla-S" onclick="verificaLetraEsolhida ('S')">S</button>
+                <button id="tecla-T" onclick="verificaLetraEsolhida ('T')">T</button>
+                <button id="tecla-U" onclick="verificaLetraEsolhida ('U')">U</button>
+                <button id="tecla-V" onclick="verificaLetraEsolhida ('V')">V</button>
+                <button id="tecla-W" onclick="verificaLetraEsolhida ('W')">W</button>
+                <button id="tecla-X" onclick="verificaLetraEsolhida ('X')">X</button>
+                <button id="tecla-Y" onclick="verificaLetraEsolhida ('Y')">Y</button>
+                <button id="tecla-Z" onclick="verificaLetraEsolhida ('Z')">Z</button>
+                <button id="btnreiniciar">🎮</button>
+            </div>
+
+        </div>
+        <div id="categoria">
+            <!-- CATEGORIA -->
+
+        </div>
+        <!-- Inicio modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body" id="modalBody"></div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- fim modal Bootstrap--> 
+
+        <!-- Fim modal -->
+        <!-- Modal para adicionar palavras -->
+        <div id ="modal-alerta" class ="modal-container">
+            <div class="modal-add-palavra">
+                <div class ="modal-header-add-palavra" id="modal-titulo">
+                    <span id="fechaModal" class="close">&times;</span>
+                    <h2>ADICIONAR PALAVRA</h2>
+                </div>
+                <div class="modal-body-add-palavra" id="modal-mensagem">
+                    <input id="addPalavra" type="password" placeholder="PALAVRA" required>
+                    <input id="addCategoria" type="text" placeholder="CATEGORIA" required>
+                    <button onclick="adicionarPalavra()">Adicionar</button>
+                      </div>
+                   </div> 
+                </div>
+        <div id="status">Modo Automático</div>
+        <button id="abreModalAddPalavra"><i class='bx bx-message-square-add'></i></button>
+        <img src="IMG/jogarNovamente.gif" id="jogarNovamente"></img>
+        <button id="recarregar" onclick="sortear()"><i class='bx bx-refresh'></i></button>
+        <button id="jogarAutomatico" onclick="listaAutomatica()"><i class='bx bx-pause-circle'></i></button>
+        
+
+
+    <script src="JS/forca.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html> 
